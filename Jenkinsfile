@@ -8,30 +8,38 @@ pipeline {
                 }
         steps {
                 echo 'This stage will be executed first'
-		sleep 10
                 }
         }
 
 	
-        stage('Run Tests') {
+        stage('Run') {
             parallel {
-                stage('Test On Windows') {
+                stage('build') {
                    agent {
-                        label "pedo"
+                        label "build"
                     }
                     steps {
-                        echo "Task1 on Parallel"
-			    sleep 10
+			 sleep 10   	
+                        echo "build on Parallel"
                     }
                     
                 }
-                stage('Test On Master') {
+                stage('deploy') {
                     agent {
-                        label "madcool"
+                        label "deploy"
                     }
                     steps {
-				sleep 10
-			    	echo "Task2 on Parallel"
+			    	sleep 10
+				echo "deploy on Parallel"
+			}
+                }
+		stage('quality') {
+                    agent {
+                        label "quality"
+                    }
+                    steps {
+			    	sleep 10
+				echo "quality on Parallel"
 			}
                 }
             }
