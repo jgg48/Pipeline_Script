@@ -25,10 +25,11 @@ pipeline {
                 }
                 stage('Test On Master') {
                     agent {
-                        label "master"
+                        label "madcool"
                     }
                     steps {
-				echo "Task2 on Parallel"
+				sleep 10
+			    	echo "Task2 on Parallel"
 			}
                 }
             }
