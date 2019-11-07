@@ -8,6 +8,7 @@ pipeline {
                 }
         steps {
                 echo 'This stage will be executed first'
+		sleep 10
                 }
         }
 
@@ -20,6 +21,7 @@ pipeline {
                     }
                     steps {
                         echo "Task1 on Parallel"
+			    sleep 10
                     }
                     
                 }
